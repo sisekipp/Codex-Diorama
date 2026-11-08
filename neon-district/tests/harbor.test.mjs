@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const source=fs.readFileSync(new URL('../src/scene/harborMotion.ts',import.meta.url),'utf8');
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {getTrainState}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+test('both trains stop inside the same platform extent',()=>{for(const t of [26,30,38]){assert.equal(getTrainState(t,1).z,24);assert.equal(getTrainState(t,-1).z,0);}});
+test('doors open only during the platform dwell and close before departure',()=>{assert.equal(getTrainState(25,1).doorOffset,0);assert.equal(getTrainState(30,1).doorOffset,.8);assert.equal(getTrainState(40,1).doorOffset,0);assert.ok(getTrainState(26.1,1).doorOffset<.8);});
+test('approach and departure travel in the intended direction',()=>{assert.ok(getTrainState(5,1).z<getTrainState(20,1).z);assert.ok(getTrainState(45,1).z<getTrainState(70,1).z);assert.ok(getTrainState(45,-1).z>getTrainState(70,-1).z);});
+test('train recycling occurs outside visible track including its trailing cars',()=>{assert.ok(getTrainState(85.99,1).z-42>165);assert.ok(getTrainState(0,1).z+8< -135);assert.ok(getTrainState(85.99,-1).z+42< -135);assert.ok(getTrainState(0,-1).z-8>165);});

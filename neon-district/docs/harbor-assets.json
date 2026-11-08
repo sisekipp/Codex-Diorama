@@ -1,0 +1,56 @@
+{
+  "retrieved": "2026-11-08",
+  "publisher": "Poly Haven",
+  "license_source": "https://polyhaven.com/license",
+  "assets": [
+    {
+      "file": "metal-color.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_diff_1k.jpg",
+      "sha256": "a0162bffce47d4a35613a12af22571b28c18412dc5805cbb69eac343554ef750",
+      "asset": "blue_metal_plate",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "metal-normal.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_nor_gl_1k.jpg",
+      "sha256": "970f0273c9e2e3b4fc8338bfd58a28c413b70ac4d1734d9dc8a136724bde56e6",
+      "asset": "blue_metal_plate",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "metal-arm.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/blue_metal_plate/blue_metal_plate_arm_1k.jpg",
+      "sha256": "9321b539fe9cf0136ea04c3405b95ae82383f31c258b9c0e37ff8a1e577b637f",
+      "asset": "blue_metal_plate",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "concrete-color.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_panels/concrete_panels_diff_1k.jpg",
+      "sha256": "f7f9d5102b2daa199b42cae7d67d0b7a2977d98d80f45c302f93454224ebd140",
+      "asset": "concrete_panels",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "concrete-normal.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_panels/concrete_panels_nor_gl_1k.jpg",
+      "sha256": "c971054512ff5e5b7c98db866d6018160161071a730bdfee11cada2d3d5fbcb5",
+      "asset": "concrete_panels",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "concrete-arm.jpg",
+      "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_panels/concrete_panels_arm_1k.jpg",
+      "sha256": "84f2a0dbf99628526338dee313f4eedf6ecb534e95537c9d9a7cda0085b241c5",
+      "asset": "concrete_panels",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "harbor-light.hdr",
+      "source": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/venice_sunset_1k.hdr",
+      "sha256": "92fe2b29b1957828fb8925a57633540bbba5bf380d9285ed553443e834249352",
+      "asset": "venice_sunset",
+      "license": "CC0-1.0"
+    }
+  ]
+}

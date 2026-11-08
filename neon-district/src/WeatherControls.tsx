@@ -1,0 +1,7 @@
+import { CloudRain, Droplets, Wind } from 'lucide-react';
+import type { WeatherSettings } from './scene/weather';
+type Props={settings:WeatherSettings;onChange:(settings:WeatherSettings)=>void;disabled:boolean;reducedMotion:boolean};
+export default function WeatherControls({settings,onChange,disabled,reducedMotion}:Props){
+  const controls=[{key:'rain' as const,label:'Regenstärke',icon:CloudRain,hint:settings.rain===0?'Aus':settings.rain<30?'Nieselregen':settings.rain<70?'Regen':'Starkregen'},{key:'smoke' as const,label:'Dampf & Rauch',icon:Wind,hint:settings.smoke===0?'Aus':'Schwaden aus Gullys und Lüftungen'},{key:'wetness' as const,label:'Straßennässe',icon:Droplets,hint:settings.wetness===0?'Trockener Asphalt':'Wasserfilm und Neonreflexe'}];
+  return <div className="weather-controls">{controls.map(({key,label,icon:Icon,hint})=><div className="weather-control" key={key}><div className="weather-label"><label htmlFor={'weather-'+key}><Icon size={16}/>{label}</label><output htmlFor={'weather-'+key}>{settings[key]}<span> %</span></output></div><input id={'weather-'+key} type="range" min="0" max="100" step="1" value={settings[key]} disabled={disabled} onChange={event=>onChange({...settings,[key]:Number(event.target.value)})} aria-valuetext={`${settings[key]} Prozent — ${hint}`} style={{'--range-progress':`${settings[key]}%`} as React.CSSProperties}/><small>{hint}</small></div>)}{reducedMotion&&<p className="motion-note">Reduzierte Bewegung aktiv: Regen und Dampf sind pausiert. Die Straßennässe bleibt einstellbar.</p>}</div>;
+}

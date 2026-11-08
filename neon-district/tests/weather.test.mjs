@@ -1,0 +1,12 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ts from 'typescript';
+const source=fs.readFileSync(new URL('../src/scene/weather.ts',import.meta.url),'utf8');
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {clampPercent,getWeatherRates}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+test('range inputs clamp finite values',()=>{assert.equal(clampPercent(-3),0);assert.equal(clampPercent(120),100);assert.equal(clampPercent(NaN),0);});
+test('rain zero clears all rainfall and impacts',()=>{const r=getWeatherRates(0,75,false,false);assert.equal(r.rain,0);assert.equal(r.splashes,0);assert.ok(r.smoke>0);});
+test('rain strengths produce distinct increasing density',()=>{const values=[10,40,70,100].map(v=>getWeatherRates(v,0,false,false).rain);assert.ok(values.every((v,i)=>i===0||v>values[i-1]));});
+test('quality reduces particle cost and preserves independent controls',()=>{const high=getWeatherRates(85,70,false,false),low=getWeatherRates(85,70,true,false);assert.ok(low.rain<high.rain);assert.ok(low.smoke<high.smoke);assert.ok(low.smoke>0);assert.equal(high.rainSpeed,low.rainSpeed);});
+test('reduced motion suppresses moving effects',()=>{const r=getWeatherRates(100,100,false,true);assert.equal(r.rain,0);assert.equal(r.smoke,0);assert.equal(r.splashes,0);});

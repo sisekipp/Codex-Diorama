@@ -1,6 +1,6 @@
-# Yoru — Cyberpunk District
+# Yoru · Nox · Ares — 3D-Dioramen
 
-Eine React-PWA mit einer frei drehbaren Babylon.js-Stadtszene.
+Eine React-PWA mit drei frei drehbaren Babylon.js-Dioramen.
 
 ## Lokal starten
 
@@ -65,3 +65,27 @@ Die Kameraansichten **Werkstatt** (Yoru) und **Andockplatz** (Nox) zeigen die ne
 Die Beleuchtungsrunde ergänzt mitbewegte Scheinwerfer und Rücklichtschein sowie Licht von Reklamen, Straßen- und Bahnsteiglampen. Ein begrenzter Vorrat tatsächlicher Lichtquellen folgt den nahen Leuchten; die reduzierte Grafikqualität verwendet weniger davon. Nasse Straßen beziehen bewegte Glanzlichter aus denselben Lichtquellen. Räder des fahrenden Coupés und der Züge rollen abhängig von der Strecke; Hubturbinen und Lüfter besitzen eigene Drehachsen. Bei reduzierter Bewegung bleiben sie still.
 
 Auch der Lieferwagen, Fassadenanschlüsse, Dachtechnik, Automaten, Schildergehäuse, Müllbehälter, Brücke, Ladegeräte und Bahnsteigmöbel sind weiter ausgearbeitet. Opaque Strukturmaterialien nutzen einheitliche physikalische Beleuchtung und gemeinsame lokale Detailtexturen; dafür sind keine zusätzlichen Downloads erforderlich.
+
+## ARES / OUTPOST 07 — Marsbasis
+
+Die dritte Szene ist über **Ares · Marsbasis** oder `/?scene=mars` erreichbar. Vier Ansichten zeigen die Basis, Startrampe, Kraterlandschaft und Außenmission. Wohnmodule, Drucktunnel, ein offener Roverhangar, Gewächshaus mit Pflanzen, Solarfelder, Tanks, Pumpen, Antenne und Probenstation bilden den Außenposten.
+
+Sechs Rover einschließlich Erkundungs-, Fracht-, Wartungs- und abgestellter Fahrzeuge sowie sechs Raumanzugfiguren bevölkern die Basis. Fahrende Rover besitzen drehende Räder; laufende Astronauten und Fahrzeuge erzeugen neue Stiefel- und Reifenspuren. Wind lässt diese schneller verblassen. Der nahe Boden enthält geometrische Sandrippen, ergänzende Normaldetails und verstreute Steine.
+
+Die Rakete durchläuft Countdown, zurückfahrende Versorgungsarme, Zündung, Abheben und Aufstieg. Flammen, Triebwerkslicht, transparente Rauchwolken, Bodenstaub und örtliches Hitzeflimmern begleiten den Start. **Start wiederholen** setzt ihn zurück; die Rampenkamera folgt dem Aufstieg bis zu einer manuellen Kameraeingabe. Eine zweite Rampe enthält einen abgestellten Lander.
+
+**Windstärke**, **Staub in der Luft** und **Tageszeit** werden separat von den Stadtwettereinstellungen gespeichert. Reduzierte Bewegung pausiert Fahrzeuge, Astronauten, Partikel und Start; die Tageszeit bleibt einstellbar. Die sparsame Qualität begrenzt Lichtquellen und Partikel. Alle Marsmodelle und Oberflächendetails entstehen lokal im Projekt, die Reflexionsumgebung wird aus dem bestehenden CC0-Bestand wiederverwendet. Es gibt keine zusätzlichen Downloads.
+
+`src/scene/mars/` trennt Gelände, Materialien, Basis, Figuren, Rover, Spuren und Startablauf. Spuren verwenden begrenzte Instanzpuffer mit Verblassen; der Sand wird nicht dauerhaft verformt. Rauch und Staub sind transparente Partikelsysteme, keine Strömungssimulation. `npm test` prüft zusätzlich Startphasen, Armfreigabe, Aufstieg, Windverblassen, Geländeanker und Tageslicht.
+
+## BOREAL / Station 12 — polare Küste auf der Erde
+
+Viertes Diorama unter **Boreal · Eisbasis** oder `/?scene=polar`: erhöhte Forschungs- und Wohnmodule mit transparenten Fenstern und ausgestatteten Innenräumen, offene Fahrzeugwerkstatt, Kraftstoffanlage, Bohrstation, alter Außenposten und ein Eisbrecher am Anleger. Vier Ansichten zeigen Station, Landebahn, Eishafen und Fahrzeuge/Forscher aus der Nähe.
+
+Das Hercules-Modell von mgg8 / Aviation Gazetteer (CC0) wird lokal geladen. Vier Propeller und sechs Räder sind in bewegliche Teile umgebaut. Es landet, bremst, rollt zum Vorfeld und öffnet eine ergänzte Ladeplattform. **Landung wiederholen** startet den Ablauf neu. Die Flugkamera folgt bis zur manuellen Eingabe. Eine 52 m breite freie Anflugzone hält Gletscher und Berge außerhalb des Flugzeugs; der gesamte Anflug ist gegen Rumpf, Kufen und Flügel geprüft.
+
+Drei Kufenbahnen drücken das hoch aufgelöste Schneegelände um bis zu 13 cm ein und erzeugen seitliche Schneewälle. Das bleibt während der Sitzung erhalten, auch nach einer neuen Landung. Aufgewirbelter Schnee entsteht direkt an den Kufen und beim Taxi weiter. Raupenfahrzeuge und laufende Forscher erzeugen begrenzte, mit Wind verblassende Oberflächenabdrücke. Die Fahrzeugspuren abseits der Piste verformen den Untergrund nicht. Eine Pistenraupe, Versorgungstransporter und Schneemobile haben ausgearbeitete Fahrwerke, Hydraulik und Beleuchtung. Sieben Forscher besitzen bewegliche Hüft-, Knie-, Schulter- und Ellenbogengelenke sowie geformte Winterkleidung und Ausrüstung.
+
+Schneefall, Windstärke, Bodenschnee und Tageszeit lassen sich getrennt einstellen und bleiben lokal gespeichert. Nacht aktiviert das Polarlicht. Reduzierte Bewegung pausiert Fahrzeuge, Figuren, Kräne, Antennen, Wetter und Landung. Die sparsame Qualität begrenzt Partikel, Lichter und Aktualisierungen der Reflexionen und Schatten.
+
+Weitere Modellrecherche und genaue Herkunft: [Modellquellen](../docs/boreal-model-sources.md). Es werden ausschließlich Downloads ohne Anmeldung eingesetzt. Figuren und Eisbrecher bleiben eigene Modelle; die besser ausgearbeiteten Sketchfab-Figuren sind wegen der Anmeldung nicht importiert. Die Schneeoberfläche und polare Lichtumgebung stammen von Poly Haven (CC0). Alle Dateien einschließlich des Modelldecoders sind lokal und werden für Offlinebetrieb vorgehalten.

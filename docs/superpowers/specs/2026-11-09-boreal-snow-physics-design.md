@@ -1,0 +1,9 @@
+# BOREAL: physical snow transport and rendering
+
+The user approved the researched complete snow-system rebuild. Preserve all four dioramas, no sign-in assets, no automatic commit/publication. Work in the existing checkout.
+
+Implement a conservative granular snow layer coupled to ballistic three-dimensional clumps. A cell stores immutable bedrock, snow mass and packing; surface height follows mass / density. Contacts compact snow under load and transfer a measured mass to shoulders. A swept angled plow blade moves material ahead and to its discharge side. Over-steep deposits relax according to friction/cohesion. Ejected clumps own their mass until they collide with the snow and redeposit it. Weather transport must not restore an invented original height: wind moves mass, precipitation is separately counted input.
+
+Use the existing WebGL2 engine and PBR lighting. Run the deterministic local active-cell solver in TypeScript, upload its state to a packed texture, and displace/render the surface on the GPU. A finer camera-local mesh resolves nearby geometry without increasing detail across the full station. The shader derives normals, roughness, grain, wind ripples and restrained crystal response from the same state. Preserve broad browser support; a WebGPU/MPM rewrite is not a prerequisite and must not be claimed. This is a reduced granular layer model with 3D clumps, not a fully volumetric elasto-plastic MPM continuum.
+
+Acceptance: mass conserved under contacts, plowing, slumping, wind and particle redeposition; repeat passes encounter prior piles; denser snow resists compression; ground never falls through bed; bounds/time-step extremes finite; stopped plows emit no material; trails follow the actual deformed surface; normal/shadow passes use the displaced surface; reduced motion freezes physics and shader animation. Existing aircraft-clearance regression remains intact. Production desktop/mobile and offline loading checked.

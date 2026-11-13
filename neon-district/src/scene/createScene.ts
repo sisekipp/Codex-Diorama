@@ -26,11 +26,15 @@ import '@babylonjs/core/Rendering/edgesRenderer';
 import '@babylonjs/core/Rendering/boundingBoxRenderer';
 import '@babylonjs/core/Materials/Textures/Loaders/envTextureLoader';
 
-export type SceneKind='district'|'megacity';
+export type SceneKind='district'|'megacity'|'mars'|'polar';
 export type Preset='street'|'roofs'|'panorama'|'details';
-export type SceneController={zoom:(direction:number)=>void;reset:()=>void;preset:(name:Preset)=>void;setRain:(value:number)=>void;setSmoke:(value:number)=>void;setWetness:(value:number)=>void;setOrbit:(on:boolean)=>void;setQuality:(quality:'high'|'low')=>void;diagnostics:()=>{alpha:number;beta:number;radius:number;meshes:number;fps:number;rain:number;smoke:number;wetness:number;orbit:boolean;cars:number;motorcycles:number};dispose:()=>void};
+import type { PolarSettings, ArrivalState } from './polar/state';
+import type { MarsSettings, LaunchState } from './mars/state';
+export type SceneController={resetSnow?:()=>void;setPolar?:(settings:PolarSettings)=>void;restartArrival?:()=>void;setMars?:(settings:MarsSettings)=>void;restartLaunch?:()=>void;zoom:(direction:number)=>void;reset:()=>void;preset:(name:Preset)=>void;setRain:(value:number)=>void;setSmoke:(value:number)=>void;setWetness:(value:number)=>void;setOrbit:(on:boolean)=>void;setQuality:(quality:'high'|'low')=>void;diagnostics:()=>{alpha:number;beta:number;radius:number;meshes:number;fps:number;rain:number;smoke:number;wetness:number;orbit:boolean;cars:number;motorcycles:number;astronauts?:number;footprints?:number;tireMarks?:number;launch?:LaunchState;arrival?:ArrivalState};dispose:()=>void};
 const districtPresets={details:{alpha:-1.5,beta:1.26,radius:15,target:new Vector3(7.5,1.5,-18)},street:{alpha:-1.64,beta:1.47,radius:44,target:new Vector3(0,4,5)},roofs:{alpha:-.85,beta:.73,radius:66,target:new Vector3(0,17,15)},panorama:{alpha:-1.2,beta:1.04,radius:100,target:new Vector3(0,21,22)}};
 export async function createDistrict(canvas:HTMLCanvasElement,onManual:()=>void,kind:SceneKind='district'):Promise<SceneController>{
+  if(kind==='polar'){const {createPolarScene}=await import('./polar/createPolarScene');return createPolarScene(canvas,onManual);}
+  if(kind==='mars'){const {createMarsScene}=await import('./mars/createMarsScene');return createMarsScene(canvas,onManual);}
   const mega=kind==='megacity';
   const presets=mega?{details:{alpha:-2.0,beta:1.08,radius:13.5,target:new Vector3(29.5,85,-71.8)},street:{alpha:-1.3,beta:1.4,radius:110,target:new Vector3(16,89,-19)},roofs:{alpha:-1.52,beta:1.4,radius:91,target:new Vector3(-4,92,10)},panorama:{alpha:-1.08,beta:.97,radius:355,target:new Vector3(0,125,30)}}:{...districtPresets};
   if(window.innerWidth<760){presets.details=mega?{...presets.details,radius:20}:{...presets.details,alpha:-1.8,radius:19.5,target:new Vector3(5.2,1.2,-18.3)};}

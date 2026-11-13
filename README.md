@@ -1,4 +1,4 @@
-# Yoru — Cyberpunk PWA
+# Yoru · Nox · Ares · Boreal — 3D-PWA
 
 Die Anwendung liegt in `neon-district/`.
 

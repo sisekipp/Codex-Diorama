@@ -1,0 +1,21 @@
+# Stable filenames and HTML must be revalidated when a release changes them.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Vite gives these files content hashes. Never apply this rule to /models or /materials.
+/assets/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+# The browser must discover waiting service-worker releases instead of pinning an old one.
+/sw.js
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/registerSW.js
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  ! Cache-Control
+  Cache-Control: no-cache

@@ -21,3 +21,5 @@ Anschließend `http://localhost:4187` öffnen. Die Installationsoption hängt vo
 Weitere Hinweise, Steuerung und Asset-Herkunft: [Projekt-README](neon-district/README.md).
 
 Abnahme und bekannte Grenzen: [Prüfbericht](docs/verification.md).
+
+Cloudflare-Deployment: [Einrichtung und PWA-Updates](docs/deployment/cloudflare.md).

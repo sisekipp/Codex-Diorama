@@ -3,3 +3,8 @@ dist/
 *.local
 *.tsbuildinfo
 .openai/sites-state.json
+
+# Cloudflare local runtime and deployment bundles
+.wrangler/
+.dev.vars
+.dev.vars.*

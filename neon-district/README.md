@@ -89,3 +89,7 @@ Drei Kufenbahnen drücken das hoch aufgelöste Schneegelände um bis zu 13 cm ei
 Schneefall, Windstärke, Bodenschnee und Tageszeit lassen sich getrennt einstellen und bleiben lokal gespeichert. Nacht aktiviert das Polarlicht. Reduzierte Bewegung pausiert Fahrzeuge, Figuren, Kräne, Antennen, Wetter und Landung. Die sparsame Qualität begrenzt Partikel, Lichter und Aktualisierungen der Reflexionen und Schatten.
 
 Weitere Modellrecherche und genaue Herkunft: [Modellquellen](../docs/boreal-model-sources.md). Es werden ausschließlich Downloads ohne Anmeldung eingesetzt. Figuren und Eisbrecher bleiben eigene Modelle; die besser ausgearbeiteten Sketchfab-Figuren sind wegen der Anmeldung nicht importiert. Die Schneeoberfläche und polare Lichtumgebung stammen von Poly Haven (CC0). Alle Dateien einschließlich des Modelldecoders sind lokal und werden für Offlinebetrieb vorgehalten.
+
+## Cloudflare-Deployment
+
+Cloudflare Workers mit Static Assets und GitHub-Anbindung ist vorbereitet. Die vollständigen Dashboard-Werte, Cache-Regeln und PWA-Prüfschritte stehen in der [Cloudflare-Anleitung](../docs/deployment/cloudflare.md). Lokal prüft `npm run check:cloudflare` den Produktionsbuild ohne Veröffentlichung; `npm run preview:cloudflare` startet die Cloudflare-Laufzeit.
